@@ -66,7 +66,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://heltman.github.io/2019/08/28/数据仓库架构/%E5%A4%A7%E6%95%B0%E6%8D%AE.jpg">
 <meta property="og:image" content="http://heltman.github.io/2019/08/28/数据仓库架构/1558625207687.png">
-<meta property="og:updated_time" content="2019-08-28T14:53:23.415Z">
+<meta property="og:updated_time" content="2019-08-28T14:59:57.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据仓库架构简单介绍">
 <meta name="twitter:description" content="针对数据仓库架构的相关概念进行简单的解释说明，对数据仓库的建模方式进行简单的描述。">
@@ -292,7 +292,7 @@
                 
               
 
-              <time title="创建时间：2019-08-28 22:32:57 / 修改时间：22:53:23" itemprop="dateCreated datePublished" datetime="2019-08-28T22:32:57+08:00">2019-08-28</time>
+              <time title="创建时间：2019-08-28 22:32:57 / 修改时间：22:59:57" itemprop="dateCreated datePublished" datetime="2019-08-28T22:32:57+08:00">2019-08-28</time>
             </span>
           
             
@@ -325,7 +325,6 @@
 
       
         <center>针对数据仓库架构的相关概念进行简单的解释说明，对数据仓库的建模方式进行简单的描述。</center>
-
 <a id="more"></a>
 
 <p><img src="//heltman.github.io/2019/08/28/数据仓库架构/%E5%A4%A7%E6%95%B0%E6%8D%AE.jpg" alt="大数据"></p>
@@ -400,7 +399,7 @@
 </tbody></table>
 <hr>
 <h2 id="数据仓库建模"><a href="#数据仓库建模" class="headerlink" title="数据仓库建模"></a>数据仓库建模</h2><p>范式建模、维度建模、Data Valut、Anchor</p>
-<h4 id="范式建模：ER模型"><a href="#范式建模：ER模型" class="headerlink" title="范式建模：ER模型"></a>范式建模：ER模型</h4><p>自上而下（EDW-DM）的数据仓库架构。操作型或事务型系统的数据源，通过ETL抽取转换和加载到数据仓库的ODS层，然后通过ODS的数据建设原子数据的数据仓库EDW，EDW不是多维格式的，不方便上层应用做数据分析，所以需要通过汇总建设成多维格式的数据集市层。</p>
+<h3 id="范式建模：ER模型"><a href="#范式建模：ER模型" class="headerlink" title="范式建模：ER模型"></a>范式建模：ER模型</h3><p>自上而下（EDW-DM）的数据仓库架构。操作型或事务型系统的数据源，通过ETL抽取转换和加载到数据仓库的ODS层，然后通过ODS的数据建设原子数据的数据仓库EDW，EDW不是多维格式的，不方便上层应用做数据分析，所以需要通过汇总建设成多维格式的数据集市层。</p>
 <p>优势：易于维护，高度集成</p>
 <p>劣势：结构死板，部署周期较长</p>
 <h3 id="维度建模"><a href="#维度建模" class="headerlink" title="维度建模"></a>维度建模</h3><p>以分析决策的需求出发构建模型，构建的数据模型为分析需求服务，因此它重点解决用户如何更快速完成分析需求，同时还有叫好的大规模复杂查询的响应性能。</p>
@@ -444,7 +443,7 @@
 <li>确定事实</li>
 </ol>
 <hr>
-<h2 id="数据治理"><a href="#数据治理" class="headerlink" title="数据治理"></a>数据治理</h2><h4 id="元数据管理"><a href="#元数据管理" class="headerlink" title="元数据管理"></a>元数据管理</h4><ul>
+<h2 id="数据治理"><a href="#数据治理" class="headerlink" title="数据治理"></a>数据治理</h2><h3 id="元数据管理"><a href="#元数据管理" class="headerlink" title="元数据管理"></a>元数据管理</h3><ul>
 <li>技术元数据<ul>
 <li>表级血缘分析</li>
 <li>字段级别血缘分析</li>
@@ -454,7 +453,7 @@
 </li>
 <li>业务元数据</li>
 </ul>
-<h4 id="主数据管理"><a href="#主数据管理" class="headerlink" title="主数据管理"></a>主数据管理</h4><hr>
+<h3 id="主数据管理"><a href="#主数据管理" class="headerlink" title="主数据管理"></a>主数据管理</h3><hr>
 <h2 id="数据仓库架构"><a href="#数据仓库架构" class="headerlink" title="数据仓库架构"></a>数据仓库架构</h2><p><img src="//heltman.github.io/2019/08/28/数据仓库架构/1558625207687.png" alt="1558625207687"></p>
 
     </div>
@@ -551,7 +550,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据仓库概念"><span class="nav-number">1.</span> <span class="nav-text">数据仓库概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据仓库"><span class="nav-number">1.1.</span> <span class="nav-text">数据仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#需求背景"><span class="nav-number">1.1.1.</span> <span class="nav-text">需求背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技术发展状况"><span class="nav-number">1.1.2.</span> <span class="nav-text">技术发展状况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ODS：操作型数据仓库"><span class="nav-number">1.1.3.</span> <span class="nav-text">ODS：操作型数据仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#STAGING-AREA（缓存区，分段存储区）"><span class="nav-number">1.1.4.</span> <span class="nav-text">STAGING AREA（缓存区，分段存储区）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DATA-MART（数据集市）"><span class="nav-number">1.1.5.</span> <span class="nav-text">DATA MART（数据集市）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库设计"><span class="nav-number">1.1.6.</span> <span class="nav-text">数据仓库设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OLAP（在线分析处理）"><span class="nav-number">1.1.7.</span> <span class="nav-text">OLAP（在线分析处理）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OLAP-VA-OLTP（在线分析系统和在线交易系统）"><span class="nav-number">1.1.8.</span> <span class="nav-text">OLAP VA OLTP（在线分析系统和在线交易系统）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据仓库建模"><span class="nav-number">2.</span> <span class="nav-text">数据仓库建模</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#范式建模：ER模型"><span class="nav-number">2.0.1.</span> <span class="nav-text">范式建模：ER模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#维度建模"><span class="nav-number">2.1.</span> <span class="nav-text">维度建模</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#维度表"><span class="nav-number">2.1.1.</span> <span class="nav-text">维度表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事实表"><span class="nav-number">2.1.2.</span> <span class="nav-text">事实表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#维度模型设计过程"><span class="nav-number">2.1.3.</span> <span class="nav-text">维度模型设计过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据治理"><span class="nav-number">3.</span> <span class="nav-text">数据治理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元数据管理"><span class="nav-number">3.0.1.</span> <span class="nav-text">元数据管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主数据管理"><span class="nav-number">3.0.2.</span> <span class="nav-text">主数据管理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据仓库架构"><span class="nav-number">4.</span> <span class="nav-text">数据仓库架构</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据仓库概念"><span class="nav-number">1.</span> <span class="nav-text">数据仓库概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据仓库"><span class="nav-number">1.1.</span> <span class="nav-text">数据仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#需求背景"><span class="nav-number">1.1.1.</span> <span class="nav-text">需求背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技术发展状况"><span class="nav-number">1.1.2.</span> <span class="nav-text">技术发展状况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ODS：操作型数据仓库"><span class="nav-number">1.1.3.</span> <span class="nav-text">ODS：操作型数据仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#STAGING-AREA（缓存区，分段存储区）"><span class="nav-number">1.1.4.</span> <span class="nav-text">STAGING AREA（缓存区，分段存储区）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DATA-MART（数据集市）"><span class="nav-number">1.1.5.</span> <span class="nav-text">DATA MART（数据集市）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据仓库设计"><span class="nav-number">1.1.6.</span> <span class="nav-text">数据仓库设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OLAP（在线分析处理）"><span class="nav-number">1.1.7.</span> <span class="nav-text">OLAP（在线分析处理）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OLAP-VA-OLTP（在线分析系统和在线交易系统）"><span class="nav-number">1.1.8.</span> <span class="nav-text">OLAP VA OLTP（在线分析系统和在线交易系统）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据仓库建模"><span class="nav-number">2.</span> <span class="nav-text">数据仓库建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#范式建模：ER模型"><span class="nav-number">2.1.</span> <span class="nav-text">范式建模：ER模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#维度建模"><span class="nav-number">2.2.</span> <span class="nav-text">维度建模</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#维度表"><span class="nav-number">2.2.1.</span> <span class="nav-text">维度表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事实表"><span class="nav-number">2.2.2.</span> <span class="nav-text">事实表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#维度模型设计过程"><span class="nav-number">2.2.3.</span> <span class="nav-text">维度模型设计过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据治理"><span class="nav-number">3.</span> <span class="nav-text">数据治理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元数据管理"><span class="nav-number">3.1.</span> <span class="nav-text">元数据管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主数据管理"><span class="nav-number">3.2.</span> <span class="nav-text">主数据管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据仓库架构"><span class="nav-number">4.</span> <span class="nav-text">数据仓库架构</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
