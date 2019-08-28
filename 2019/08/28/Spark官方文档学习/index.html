@@ -54,17 +54,17 @@
   };
 </script>
 
-  <meta name="description" content="官方文档学习配置Spark连接Spark到任意hadoop集群 12345678910### in conf/spark-env.sh #### If &apos;hadoop&apos; binary is on your PATHexport SPARK_DIST_CLASSPATH=$(hadoop classpath)# With explicit path to &apos;hadoop&apos; binaryexport">
+  <meta name="description" content="Spark官方文档学习解释说明。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spark官方文档学习">
 <meta property="og:url" content="http://heltman.github.io/2019/08/28/Spark官方文档学习/index.html">
 <meta property="og:site_name" content="闲吃萝卜">
-<meta property="og:description" content="官方文档学习配置Spark连接Spark到任意hadoop集群 12345678910### in conf/spark-env.sh #### If &apos;hadoop&apos; binary is on your PATHexport SPARK_DIST_CLASSPATH=$(hadoop classpath)# With explicit path to &apos;hadoop&apos; binaryexport">
+<meta property="og:description" content="Spark官方文档学习解释说明。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T03:55:57.118Z">
+<meta property="og:updated_time" content="2019-08-28T04:30:48.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark官方文档学习">
-<meta name="twitter:description" content="官方文档学习配置Spark连接Spark到任意hadoop集群 12345678910### in conf/spark-env.sh #### If &apos;hadoop&apos; binary is on your PATHexport SPARK_DIST_CLASSPATH=$(hadoop classpath)# With explicit path to &apos;hadoop&apos; binaryexport">
+<meta name="twitter:description" content="Spark官方文档学习解释说明。">
   <link rel="canonical" href="http://heltman.github.io/2019/08/28/Spark官方文档学习/">
 
 
@@ -225,8 +225,12 @@
                 
               
 
-              <time title="创建时间：2019-08-28 11:55:57" itemprop="dateCreated datePublished" datetime="2019-08-28T11:55:57+08:00">2019-08-28</time>
+              <time title="创建时间：2019-08-28 11:55:57 / 修改时间：12:30:48" itemprop="dateCreated datePublished" datetime="2019-08-28T11:55:57+08:00">2019-08-28</time>
             </span>
+          
+            
+
+            
           
 
           
@@ -240,7 +244,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="官方文档学习"><a href="#官方文档学习" class="headerlink" title="官方文档学习"></a>官方文档学习</h1><h2 id="配置Spark"><a href="#配置Spark" class="headerlink" title="配置Spark"></a>配置Spark</h2><p>连接Spark到任意hadoop集群</p>
+        <p>Spark官方文档学习解释说明。</p>
+<a id="more"></a>
+
+<h1 id="官方文档学习"><a href="#官方文档学习" class="headerlink" title="官方文档学习"></a>官方文档学习</h1><h2 id="配置Spark"><a href="#配置Spark" class="headerlink" title="配置Spark"></a>配置Spark</h2><p>连接Spark到任意hadoop集群</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### in conf/spark-env.sh ###</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If 'hadoop' binary is on your PATH</span></span><br><span class="line"><span class="built_in">export</span> SPARK_DIST_CLASSPATH=$(hadoop classpath)</span><br><span class="line"></span><br><span class="line"><span class="comment"># With explicit path to 'hadoop' binary</span></span><br><span class="line"><span class="built_in">export</span> SPARK_DIST_CLASSPATH=$(/path/to/hadoop/bin/hadoop classpath)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Passing a Hadoop configuration directory</span></span><br><span class="line"><span class="built_in">export</span> SPARK_DIST_CLASSPATH=$(hadoop --config /path/to/configs classpath)</span><br></pre></td></tr></table></figure>
 
 <h2 id="写Spark程序"><a href="#写Spark程序" class="headerlink" title="写Spark程序"></a>写Spark程序</h2><h3 id="与Spark连接"><a href="#与Spark连接" class="headerlink" title="与Spark连接"></a>与Spark连接</h3><p>Spark 1.6.1使用Scala 2.10。要在Scala中编写应用程序，您需要使用兼容的Scala版本（例如2.10.X）。</p>
