@@ -56,19 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="Spark简单解释说明，待更新……">
-<meta name="keywords" content="入门文档,Spark">
+  <meta name="description" content="使用Ambari安装完HDP后，其中的插件使用或多或少存在一些问题，以下收集了一些解决方案供参考。">
+<meta name="keywords" content="Ambari,插件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spark简单学习说明">
-<meta property="og:url" content="http://heltman.github.io/2019/08/28/Spark官方文档学习/index.html">
+<meta property="og:title" content="Ambari插件问题处理">
+<meta property="og:url" content="http://heltman.github.io/2019/09/02/Ambari插件问题处理/index.html">
 <meta property="og:site_name" content="闲吃萝卜">
-<meta property="og:description" content="Spark简单解释说明，待更新……">
+<meta property="og:description" content="使用Ambari安装完HDP后，其中的插件使用或多或少存在一些问题，以下收集了一些解决方案供参考。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-02T03:42:49.431Z">
+<meta property="og:updated_time" content="2019-09-02T03:53:03.347Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spark简单学习说明">
-<meta name="twitter:description" content="Spark简单解释说明，待更新……">
-  <link rel="canonical" href="http://heltman.github.io/2019/08/28/Spark官方文档学习/">
+<meta name="twitter:title" content="Ambari插件问题处理">
+<meta name="twitter:description" content="使用Ambari安装完HDP后，其中的插件使用或多或少存在一些问题，以下收集了一些解决方案供参考。">
+  <link rel="canonical" href="http://heltman.github.io/2019/09/02/Ambari插件问题处理/">
 
 
 <script id="page-configurations">
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>Spark简单学习说明 | 闲吃萝卜</title>
+  <title>Ambari插件问题处理 | 闲吃萝卜</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://heltman.github.io/2019/08/28/Spark官方文档学习/">
+    <link itemprop="mainEntityOfPage" href="http://heltman.github.io/2019/09/02/Ambari插件问题处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Heltman">
@@ -273,7 +273,7 @@
       <meta itemprop="name" content="闲吃萝卜">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Spark简单学习说明
+        <h1 class="post-title" itemprop="name headline">Ambari插件问题处理
 
           
         </h1>
@@ -289,19 +289,11 @@
                 
               
 
-              <time title="创建时间：2019-08-28 11:55:57" itemprop="dateCreated datePublished" datetime="2019-08-28T11:55:57+08:00">2019-08-28</time>
+              <time title="创建时间：2019-09-02 11:43:00 / 修改时间：11:53:03" itemprop="dateCreated datePublished" datetime="2019-09-02T11:43:00+08:00">2019-09-02</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-02 11:42:49" itemprop="dateModified" datetime="2019-09-02T11:42:49+08:00">2019-09-02</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -310,14 +302,14 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Ambari/" itemprop="url" rel="index"><span itemprop="name">Ambari</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spark/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Ambari/问题处理/" itemprop="url" rel="index"><span itemprop="name">问题处理</span></a></span>
 
                 
                 
@@ -336,37 +328,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <center>Spark简单解释说明，待更新……</center>
+        <center>使用Ambari安装完HDP后，其中的插件使用或多或少存在一些问题，以下收集了一些解决方案供参考。</center>
+
 <a id="more"></a>
 
-<h2 id="配置Spark"><a href="#配置Spark" class="headerlink" title="配置Spark"></a>配置Spark</h2><p>连接Spark到任意hadoop集群</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### in conf/spark-env.sh ###</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If 'hadoop' binary is on your PATH</span></span><br><span class="line"><span class="built_in">export</span> SPARK_DIST_CLASSPATH=$(hadoop classpath)</span><br><span class="line"></span><br><span class="line"><span class="comment"># With explicit path to 'hadoop' binary</span></span><br><span class="line"><span class="built_in">export</span> SPARK_DIST_CLASSPATH=$(/path/to/hadoop/bin/hadoop classpath)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Passing a Hadoop configuration directory</span></span><br><span class="line"><span class="built_in">export</span> SPARK_DIST_CLASSPATH=$(hadoop --config /path/to/configs classpath)</span><br></pre></td></tr></table></figure>
+<h3 id="Files-View插件"><a href="#Files-View插件" class="headerlink" title="Files View插件"></a>Files View插件</h3><p><strong>问题：</strong>进行操作时弹出权限拒绝</p>
+<p><strong>解决方法：</strong></p>
+<p>在Ambari界面修改HDFS的配置中Custom core-site，新增：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop.proxyuser.admin.groups=*</span><br><span class="line">hadoop.proxyuser.admin.hosts=*</span><br></pre></td></tr></table></figure>
 
-<h2 id="写Spark程序"><a href="#写Spark程序" class="headerlink" title="写Spark程序"></a>写Spark程序</h2><h3 id="与Spark连接"><a href="#与Spark连接" class="headerlink" title="与Spark连接"></a>与Spark连接</h3><p>Spark 1.6.1使用Scala 2.10。要在Scala中编写应用程序，您需要使用兼容的Scala版本（例如2.10.X）。</p>
-<h4 id="编写Spark程序所需mvn依赖"><a href="#编写Spark程序所需mvn依赖" class="headerlink" title="编写Spark程序所需mvn依赖"></a>编写Spark程序所需mvn依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.spark<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spark-core_2.10<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中admin为报没有权限的用户名</p>
+<p>如果配置后仍然报没有权限，说明部署Ambari-server的机器上没有该用户，需要登录机器新增该用户，并添加到users、hdfs和hadoop组：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -G hdfs admin </span><br><span class="line">usermod -a -G users admin </span><br><span class="line">usermod -a -G hadoop admin</span><br></pre></td></tr></table></figure>
 
-<p>如果需要连接HDFS，还需要如下依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-client --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hadoop.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>现在应该有权限进行操作了</p>
+<h3 id="Hive-View和Hive-View-2-0插件"><a href="#Hive-View和Hive-View-2-0插件" class="headerlink" title="Hive View和Hive View 2.0插件"></a>Hive View和Hive View 2.0插件</h3><p><strong>问题：</strong>数据存储异常，主要报错如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">org.apache.ambari.view.PersistenceException: Caught exception trying to store view entity JobImpl&#123;id='null, owner='admin, hiveQueryId='null, dagId='null, queryId='null&#125;</span><br><span class="line">......</span><br><span class="line">Caused by: javax.persistence.RollbackException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.6.2.v20151217-774c696): org.eclipse.persistence.exceptions.DatabaseException</span><br><span class="line">Internal Exception: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'ambari.ds_jobimpl_5' doesn't exist</span><br><span class="line">Error Code: 1146</span><br><span class="line">Call: INSERT INTO DS_JOBIMPL_5 (DS_id, DS_applicationId, DS_confFile, DS_dagId, DS_dagName, DS_dataBase, DS_dateSubmitted, DS_duration, DS_forcedContent, DS_globalSettings, DS_guid, DS_hiveQueryId, DS_logFile, DS_owner, DS_queryFile, DS_queryId, DS_referrer, DS_sessionTag, DS_sqlState, DS_status, DS_statusDir, DS_statusMessage, DS_title) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</span><br></pre></td></tr></table></figure>
 
-<p>最后需要在程序中import一些Spark类</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.spark.<span class="type">SparkContext</span></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.<span class="type">SparkConf</span></span><br></pre></td></tr></table></figure>
+<p><strong>解决方法：</strong>需要到Mysql的ambari数据库中建立相应表，建表语句如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> DS_JOBIMPL_5 (</span><br><span class="line">ds_id <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">ds_applicationid <span class="built_in">TEXT</span>,</span><br><span class="line">ds_conffile <span class="built_in">TEXT</span>,</span><br><span class="line">ds_dagid <span class="built_in">TEXT</span>,</span><br><span class="line">ds_dagname <span class="built_in">TEXT</span>,</span><br><span class="line">ds_database <span class="built_in">TEXT</span>,</span><br><span class="line">ds_datesubmitted <span class="built_in">BIGINT</span>,</span><br><span class="line">ds_duration <span class="built_in">BIGINT</span>,</span><br><span class="line">ds_forcedcontent <span class="built_in">TEXT</span>,</span><br><span class="line">ds_globalsettings <span class="built_in">TEXT</span>,</span><br><span class="line">DS_guid <span class="built_in">TEXT</span>,</span><br><span class="line">DS_hiveQueryId <span class="built_in">TEXT</span>,</span><br><span class="line">ds_logfile <span class="built_in">TEXT</span>,</span><br><span class="line">ds_owner <span class="built_in">TEXT</span>,</span><br><span class="line">ds_queryfile <span class="built_in">TEXT</span>,</span><br><span class="line">ds_queryid <span class="built_in">TEXT</span>,</span><br><span class="line">ds_referrer <span class="built_in">TEXT</span>,</span><br><span class="line">ds_sessiontag <span class="built_in">TEXT</span>,</span><br><span class="line">ds_sqlstate <span class="built_in">TEXT</span>,</span><br><span class="line">ds_status <span class="built_in">TEXT</span>,</span><br><span class="line">ds_statusdir <span class="built_in">TEXT</span>,</span><br><span class="line">ds_statusmessage <span class="built_in">TEXT</span>,</span><br><span class="line">ds_title <span class="built_in">TEXT</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (ds_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>（在Spark 1.3.0之前，您需要显式导入org.apache.spark.SparkContext._以启用必要的隐式转换。)</p>
-<h3 id="初始化Spark"><a href="#初始化Spark" class="headerlink" title="初始化Spark"></a>初始化Spark</h3><p>Spark程序必须做的第一件事是创建一个SparkContext对象，它告诉Spark如何访问集群。要创建SparkContext，首先需要构建一个包含有关应用程序信息的SparkConf对象。</p>
-<p>每个JVM只能激活一个SparkContext。在创建新的SparkContext之前，必须先<code>stop()</code>。</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setAppName(appName).setMaster(master)</span><br><span class="line"><span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</span><br></pre></td></tr></table></figure>
-
-<p>appName参数是应用程序在集群UI上显示的名称。 master是Spark，Mesos或YARN群集URL，或者是以本地模式运行的特殊“本地”字符串。 实际上，在群集上运行时，您不希望在程序中对master进行硬编码，而是使用spark-submit启动应用程序并在那里接收它。 但是，对于本地测试和单元测试，您可以传递“local”以在进程中运行Spark。</p>
-<h4 id="使用shell"><a href="#使用shell" class="headerlink" title="使用shell"></a>使用shell</h4><p>在Spark shell中，已经在名为<code>sc</code>的变量中为您创建了一个特殊的SparkContext 。制作自己的SparkContext将无法正常工作。您可以使用<code>--master</code>参数设置上下文连接到的主服务器，并且可以通过将逗号分隔的列表传递给参数来将JAR添加到类路径中<code>--jars</code>。您还可以通过为参数提供以逗号分隔的maven坐标列表，将依赖项（例如Spark包）添加到shell会话中<code>--packages</code>。任何可能存在依赖关系的其他存储库（例如SonaType）都可以传递给<code>--repositories</code>参数。例如，要<code>bin/spark-shell</code>在四个核心上运行，请使用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/spark-shell --master <span class="built_in">local</span>[4]</span><br></pre></td></tr></table></figure>
-
-<p>或者，要将code.jar添加到其类路径中，请使用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/spark-shell --master <span class="built_in">local</span>[4] --jars code.jar</span><br></pre></td></tr></table></figure>
-
-<p>要使用maven坐标包含依赖项:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/spark-shell --master <span class="built_in">local</span>[4] --packages <span class="string">"org.example:example:0.1"</span></span><br></pre></td></tr></table></figure>
-
-<p>有关选项的完整列表，请运行<code>spark-shell --help</code>。在幕后， <code>spark-shell</code>调用更通用的<span class="exturl" data-url="aHR0cDovL3NwYXJrLmFwYWNoZS5vcmcvZG9jcy8xLjYuMS9zdWJtaXR0aW5nLWFwcGxpY2F0aW9ucy5odG1s" title="http://spark.apache.org/docs/1.6.1/submitting-applications.html"><code>spark-submit</code>脚本<i class="fa fa-external-link"></i></span>。</p>
 
     </div>
 
@@ -393,9 +374,9 @@
           
           <div class="post-tags">
             
-              <a href="/tags/入门文档/" rel="tag"> <i class="fa fa-tag"></i> 入门文档</a>
+              <a href="/tags/Ambari/" rel="tag"> <i class="fa fa-tag"></i> Ambari</a>
             
-              <a href="/tags/Spark/" rel="tag"> <i class="fa fa-tag"></i> Spark</a>
+              <a href="/tags/插件/" rel="tag"> <i class="fa fa-tag"></i> 插件</a>
             
           </div>
         
@@ -405,15 +386,15 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/08/28/数据仓库架构/" rel="next" title="数据仓库架构简单介绍">
+                  <i class="fa fa-chevron-left"></i> 数据仓库架构简单介绍
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/28/数据仓库架构/" rel="prev" title="数据仓库架构简单介绍">
-                  数据仓库架构简单介绍 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -462,7 +443,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Spark"><span class="nav-number">1.</span> <span class="nav-text">配置Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写Spark程序"><span class="nav-number">2.</span> <span class="nav-text">写Spark程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与Spark连接"><span class="nav-number">2.1.</span> <span class="nav-text">与Spark连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编写Spark程序所需mvn依赖"><span class="nav-number">2.1.1.</span> <span class="nav-text">编写Spark程序所需mvn依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化Spark"><span class="nav-number">2.2.</span> <span class="nav-text">初始化Spark</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用shell"><span class="nav-number">2.2.1.</span> <span class="nav-text">使用shell</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Files-View插件"><span class="nav-number">1.</span> <span class="nav-text">Files View插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hive-View和Hive-View-2-0插件"><span class="nav-number">2.</span> <span class="nav-text">Hive View和Hive View 2.0插件</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->

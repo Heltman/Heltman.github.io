@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Ambari插件问题处理</title>
+      <link href="/2019/09/02/Ambari%E6%8F%92%E4%BB%B6%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/"/>
+      <url>/2019/09/02/Ambari%E6%8F%92%E4%BB%B6%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<center>使用Ambari安装完HDP后，其中的插件使用或多或少存在一些问题，以下收集了一些解决方案供参考。</center><a id="more"></a><h3 id="Files-View插件"><a href="#Files-View插件" class="headerlink" title="Files View插件"></a>Files View插件</h3><p><strong>问题：</strong>进行操作时弹出权限拒绝</p><p><strong>解决方法：</strong></p><p>在Ambari界面修改HDFS的配置中Custom core-site，新增：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop.proxyuser.admin.groups=*</span><br><span class="line">hadoop.proxyuser.admin.hosts=*</span><br></pre></td></tr></table></figure><p>其中admin为报没有权限的用户名</p><p>如果配置后仍然报没有权限，说明部署Ambari-server的机器上没有该用户，需要登录机器新增该用户，并添加到users、hdfs和hadoop组：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -G hdfs admin </span><br><span class="line">usermod -a -G users admin </span><br><span class="line">usermod -a -G hadoop admin</span><br></pre></td></tr></table></figure><p>现在应该有权限进行操作了</p><h3 id="Hive-View和Hive-View-2-0插件"><a href="#Hive-View和Hive-View-2-0插件" class="headerlink" title="Hive View和Hive View 2.0插件"></a>Hive View和Hive View 2.0插件</h3><p><strong>问题：</strong>数据存储异常，主要报错如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">org.apache.ambari.view.PersistenceException: Caught exception trying to store view entity JobImpl&#123;id='null, owner='admin, hiveQueryId='null, dagId='null, queryId='null&#125;</span><br><span class="line">......</span><br><span class="line">Caused by: javax.persistence.RollbackException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.6.2.v20151217-774c696): org.eclipse.persistence.exceptions.DatabaseException</span><br><span class="line">Internal Exception: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'ambari.ds_jobimpl_5' doesn't exist</span><br><span class="line">Error Code: 1146</span><br><span class="line">Call: INSERT INTO DS_JOBIMPL_5 (DS_id, DS_applicationId, DS_confFile, DS_dagId, DS_dagName, DS_dataBase, DS_dateSubmitted, DS_duration, DS_forcedContent, DS_globalSettings, DS_guid, DS_hiveQueryId, DS_logFile, DS_owner, DS_queryFile, DS_queryId, DS_referrer, DS_sessionTag, DS_sqlState, DS_status, DS_statusDir, DS_statusMessage, DS_title) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</span><br></pre></td></tr></table></figure><p><strong>解决方法：</strong>需要到Mysql的ambari数据库中建立相应表，建表语句如下：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> DS_JOBIMPL_5 (</span><br><span class="line">ds_id <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">ds_applicationid <span class="built_in">TEXT</span>,</span><br><span class="line">ds_conffile <span class="built_in">TEXT</span>,</span><br><span class="line">ds_dagid <span class="built_in">TEXT</span>,</span><br><span class="line">ds_dagname <span class="built_in">TEXT</span>,</span><br><span class="line">ds_database <span class="built_in">TEXT</span>,</span><br><span class="line">ds_datesubmitted <span class="built_in">BIGINT</span>,</span><br><span class="line">ds_duration <span class="built_in">BIGINT</span>,</span><br><span class="line">ds_forcedcontent <span class="built_in">TEXT</span>,</span><br><span class="line">ds_globalsettings <span class="built_in">TEXT</span>,</span><br><span class="line">DS_guid <span class="built_in">TEXT</span>,</span><br><span class="line">DS_hiveQueryId <span class="built_in">TEXT</span>,</span><br><span class="line">ds_logfile <span class="built_in">TEXT</span>,</span><br><span class="line">ds_owner <span class="built_in">TEXT</span>,</span><br><span class="line">ds_queryfile <span class="built_in">TEXT</span>,</span><br><span class="line">ds_queryid <span class="built_in">TEXT</span>,</span><br><span class="line">ds_referrer <span class="built_in">TEXT</span>,</span><br><span class="line">ds_sessiontag <span class="built_in">TEXT</span>,</span><br><span class="line">ds_sqlstate <span class="built_in">TEXT</span>,</span><br><span class="line">ds_status <span class="built_in">TEXT</span>,</span><br><span class="line">ds_statusdir <span class="built_in">TEXT</span>,</span><br><span class="line">ds_statusmessage <span class="built_in">TEXT</span>,</span><br><span class="line">ds_title <span class="built_in">TEXT</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (ds_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Ambari </category>
+          
+          <category> 问题处理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Ambari </tag>
+            
+            <tag> 插件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据仓库架构简单介绍</title>
       <link href="/2019/08/28/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%9E%B6%E6%9E%84/"/>
       <url>/2019/08/28/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E6%9E%B6%E6%9E%84/</url>
@@ -12,6 +41,8 @@
       
       
       <categories>
+          
+          <category> 数据仓库 </category>
           
           <category> 学习笔记 </category>
           
@@ -39,6 +70,8 @@
       
       
       <categories>
+          
+          <category> Spark </category>
           
           <category> 学习笔记 </category>
           
