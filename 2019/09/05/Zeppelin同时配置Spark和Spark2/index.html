@@ -56,29 +56,26 @@
   };
 </script>
 
-  <meta name="description" content="Zeppelin常见问题处理方案，方便查询。">
-<meta name="keywords" content="Spark,Zeppelin">
+  <meta name="description" content="使用Ambari同时安装Spark1和Spark2，再安装Zeppelin之后发现2个Spark执行引擎都用不了。抱着解决问题的态度，仔细查看错误日志找找原因吧。">
+<meta name="keywords" content="Zeppelin,Spark,问题处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zeppelin问题处理">
-<meta property="og:url" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/index.html">
+<meta property="og:url" content="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/index.html">
 <meta property="og:site_name" content="闲吃萝卜">
-<meta property="og:description" content="Zeppelin常见问题处理方案，方便查询。">
+<meta property="og:description" content="使用Ambari同时安装Spark1和Spark2，再安装Zeppelin之后发现2个Spark执行引擎都用不了。抱着解决问题的态度，仔细查看错误日志找找原因吧。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567675888659.png">
-<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567676458882.png">
-<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567676550472.png">
-<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567679649778.png">
-<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567679738798.png">
-<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567681494806.png">
-<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567682528350.png">
-<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567682019709.png">
-<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567683023745.png">
-<meta property="og:updated_time" content="2019-09-05T13:50:50.283Z">
+<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567675888659.png">
+<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567676458882.png">
+<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567676550472.png">
+<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567679649778.png">
+<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567679738798.png">
+<meta property="og:image" content="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567681494806.png">
+<meta property="og:updated_time" content="2019-09-09T08:55:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zeppelin问题处理">
-<meta name="twitter:description" content="Zeppelin常见问题处理方案，方便查询。">
-<meta name="twitter:image" content="http://heltman.github.io/2019/09/05/Zeppelin问题处理/1567675888659.png">
-  <link rel="canonical" href="http://heltman.github.io/2019/09/05/Zeppelin问题处理/">
+<meta name="twitter:description" content="使用Ambari同时安装Spark1和Spark2，再安装Zeppelin之后发现2个Spark执行引擎都用不了。抱着解决问题的态度，仔细查看错误日志找找原因吧。">
+<meta name="twitter:image" content="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567675888659.png">
+  <link rel="canonical" href="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/">
 
 
 <script id="page-configurations">
@@ -271,7 +268,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://heltman.github.io/2019/09/05/Zeppelin问题处理/">
+    <link itemprop="mainEntityOfPage" href="http://heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Heltman">
@@ -299,11 +296,19 @@
                 
               
 
-              <time title="创建时间：2019-09-05 02:00:23 / 修改时间：21:50:50" itemprop="dateCreated datePublished" datetime="2019-09-05T02:00:23+08:00">2019-09-05</time>
+              <time title="创建时间：2019-09-05 09:01:43" itemprop="dateCreated datePublished" datetime="2019-09-05T09:01:43+08:00">2019-09-05</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-09 16:55:24" itemprop="dateModified" datetime="2019-09-09T16:55:24+08:00">2019-09-09</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -346,10 +351,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <center>Zeppelin常见问题处理方案，方便查询。</center>
+        <center>使用Ambari同时安装Spark1和Spark2，再安装Zeppelin之后发现2个Spark执行引擎都用不了。抱着解决问题的态度，仔细查看错误日志找找原因吧。</center>
 <a id="more"></a>
 
-<h1 id="Zeppelin配置"><a href="#Zeppelin配置" class="headerlink" title="Zeppelin配置"></a>Zeppelin配置</h1><h2 id="Zeppelin同时配置Spark和Spark2"><a href="#Zeppelin同时配置Spark和Spark2" class="headerlink" title="Zeppelin同时配置Spark和Spark2"></a>Zeppelin同时配置Spark和Spark2</h2><blockquote>
+<blockquote>
 <p>起因：准备构建全新大数据平台，因此顺便研究一下将Spark1升级到Spark2，同时也就研究一下Zeppelin来可视化分析。现有平台是<code>HDP2.6.5</code>，自带<code>Spark1.6.3</code>、<code>Spark2.3.0</code>和<code>Zeppelin0.7.3</code>，使用Ambari轻松装好。</p>
 <p><strong>可是问题来了，Zeppelin中Spark处理引擎都不能使用？？？</strong></p>
 <p>难道打开方式不对？去Hortonworks官方文档里面看了一下，根本没提这回事，只说了同时安装Spark1和2时如何切换版本，大概这部分没有测试？</p>
@@ -377,23 +382,23 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.lang.AbstractMethodError: org.apache.spark.network.protocol.MessageWithHeader.touch(Ljava/lang/Object;)Lio/netty/util/ReferenceCounted;</span><br><span class="line">	at io.netty.util.ReferenceCountUtil.touch(ReferenceCountUtil.java:77)</span><br><span class="line">	at io.netty.channel.DefaultChannelPipeline.touch(DefaultChannelPipeline.java:116)</span><br></pre></td></tr></table></figure>
 
 <h5 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h5><p>因为没有在zeppelin-env中配置<code>SPARK_HOME</code>环境变量，Zeppelin找不到依赖，可是官方说明在执行引擎中配置就可以了啊？检查执行引擎确实也已经设置了？</p>
-<p><img src="//heltman.github.io/2019/09/05/Zeppelin问题处理/1567675888659.png" alt="1567675888659"></p>
+<p><img src="//heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567675888659.png" alt="1567675888659"></p>
 <p>分析看来其中只找到了bin目录下的执行脚本，但是没有找到依赖，这是为什么呢？</p>
 <p>zeppelin的执行引擎是分组的，spark和spark2的分组都是spark，而这个分组则对应着zeppelin安装目录下的interpreter目录中的一个文件夹。</p>
-<p><img src="//heltman.github.io/2019/09/05/Zeppelin问题处理/1567676458882.png" alt="1567676458882"></p>
-<p><img src="//heltman.github.io/2019/09/05/Zeppelin问题处理/1567676550472.png" alt="1567676550472"></p>
+<p><img src="//heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567676458882.png" alt="1567676458882"></p>
+<p><img src="//heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567676550472.png" alt="1567676550472"></p>
 <p>这个文件夹中会有对应执行引擎的jar包和相关依赖，查看<code>spark</code>文件夹中就会发现名为<code>zeppelin-spark_2.11-0.7.3.2.6.5.0-292.jar</code>的执行引擎和<code>dep</code>文件夹。</p>
 <p>里面包含一个200多MB的依赖文件<code>zeppelin-spark-dependencies_2.11-0.7.3.2.6.5.0-292.jar</code>，解压打开文件发现其根目录<code>spark-version-info.properties</code>文件中指明了使用的Spark版本。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">version=2.3.0.2.6.5.0-292</span><br><span class="line">user=jenkins</span><br><span class="line">revision=b6b578c8dff89bfc07981ea3bda074262c3800ad</span><br><span class="line">branch=HEAD</span><br><span class="line">date=2018-05-11T07:55:12Z</span><br><span class="line">url=git@github.com:hortonworks/spark2.git</span><br></pre></td></tr></table></figure>
 
 <p>那么就说明这个依赖包是针对Spark2的，因此属于这个组的Spark1如果没有在环境变量里指明<code>SPARK_HOME</code>，直接使用的话依赖确实可能有问题。</p>
 <h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>直接将spark1的依赖<code>/usr/hdp/current/spark-client/lib/spark-assembly-1.6.3.2.6.5.0-292-hadoop2.7.3.2.6.5.0-292.jar</code>拷贝到这个目录<code>/usr/hdp/current/zeppelin/interpreter/spark/dep</code>，这样能够解决spark1报错的问题，但是因为修改了组模板，可能存在和Spark2的依赖冲突的情况，因此推荐的解决方法是修改Zeppelin中Spark1对应执行引擎的依赖，点击进入编辑：</p>
-<p><img src="//heltman.github.io/2019/09/05/Zeppelin问题处理/1567679649778.png" alt="1567679649778"></p>
+<p><img src="//heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567679649778.png" alt="1567679649778"></p>
 <p>拉到最下方添加依赖：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/hdp/current/spark-client/lib/spark-assembly-1.6.3.2.6.5.0-292-hadoop2.7.3.2.6.5.0-292.jar</span><br></pre></td></tr></table></figure>
 
 <p>或者如图中的<code>/usr/hdp/2.6.5.0-292/spark/lib/spark-hdp-assembly.jar</code>，因为<code>current/spark-client</code>是软链到<code>2.6.5.0-292/spark</code>，而<code>spark-hdp-assembly.jar</code>只是<code>spark-assembly-1.6.3.2.6.5.0-292-hadoop2.7.3.2.6.5.0-292.jar</code>的软连接而已，随便用哪个。</p>
-<p><img src="//heltman.github.io/2019/09/05/Zeppelin问题处理/1567679738798.png" alt="1567679738798"></p>
+<p><img src="//heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567679738798.png" alt="1567679738798"></p>
 <p>点击保存后重启该执行引擎（上面编辑键右边一个），至此解决完毕。</p>
 <h4 id="解决Spark2错误"><a href="#解决Spark2错误" class="headerlink" title="解决Spark2错误"></a>解决Spark2错误</h4><h5 id="查看错误日志-1"><a href="#查看错误日志-1" class="headerlink" title="查看错误日志"></a>查看错误日志</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Caused by: io.netty.channel.socket.ChannelOutputShutdownException: Channel output shutdown</span><br><span class="line">	at io.netty.channel.AbstractChannel$AbstractUnsafe.shutdownOutput(AbstractChannel.java:587)</span><br><span class="line">	... 22 more</span><br><span class="line">Caused by: java.lang.NoSuchMethodError: org.apache.spark.network.util.AbstractFileRegion.transferred()J</span><br><span class="line">	at org.apache.spark.network.util.AbstractFileRegion.transfered(AbstractFileRegion.java:28)</span><br><span class="line">	at io.netty.channel.nio.AbstractNioByteChannel.doWrite(AbstractNioByteChannel.java:228)</span><br><span class="line">	at io.netty.channel.socket.nio.NioSocketChannel.doWrite(NioSocketChannel.java:282)</span><br><span class="line">	at io.netty.channel.AbstractChannel$AbstractUnsafe.flush0(AbstractChannel.java:879)</span><br><span class="line">	</span><br><span class="line">Exit code: 13</span><br></pre></td></tr></table></figure>
 
@@ -405,19 +410,10 @@
 <p>好了，知道怎么做了！</p>
 <h5 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h5><p>知道原因，解决就很简单了，只需要将Zeppelin中对应依赖删除换成Spark的即可。</p>
 <p>删除Zeppelin的lib中<code>netty-all-4.0.52.Final.jar</code>，将spark2中jars下<code>netty-3.9.9.Final.jar</code>，<code>netty-all-4.1.17.Final.jar</code>移到目录下</p>
-<p>删除Zeppelin的lib中<code>jackson-annotations-2.5.4.jar</code>、<code>jackson-core-2.5.4.jar</code>、<code>jackson-databind-2.5.4.jar</code>，将spark2中jars下<code>jackson-annotations-2.6.7.jar</code>、<code>jackson-core-2.6.7.jar</code>、<code>jackson-databind-2.6.7.jar</code></p>
+<p>删除Zeppelin的lib中<code>jackson-annotations-2.5.4.jar</code>、<code>jackson-core-2.5.4.jar</code>、<code>jackson-databind-2.5.4.jar</code>，将spark2中jars下<code>jackson-annotations-2.6.7.jar</code>、<code>jackson-core-2.6.7.jar</code>、<code>jackson-databind-2.6.7.1.jar</code></p>
+<p>之后请<font color="red">重启Zeppelin服务</font>来重新加载依赖</p>
 <h3 id="解决结果"><a href="#解决结果" class="headerlink" title="解决结果"></a>解决结果</h3><p>解决后两个引擎都能正常运行，完美！</p>
-<p><img src="//heltman.github.io/2019/09/05/Zeppelin问题处理/1567681494806.png" alt="1567681494806"></p>
-<h2 id="Zeppelin取消账户密码"><a href="#Zeppelin取消账户密码" class="headerlink" title="Zeppelin取消账户密码"></a>Zeppelin取消账户密码</h2><h3 id="问题说明-1"><a href="#问题说明-1" class="headerlink" title="问题说明"></a>问题说明</h3><p>使用Ambari安装的Zeppelin自动配置了账号密码登录，这样比较安全，默认账户密码是admin:admin，但是为了方便起见，想要不登录直接编辑可以吗？那是自然！只要开启匿名登录即可。</p>
-<p><img src="//heltman.github.io/2019/09/05/Zeppelin问题处理/1567682528350.png" alt="1567682528350"></p>
-<h3 id="解决过程-1"><a href="#解决过程-1" class="headerlink" title="解决过程"></a>解决过程</h3><p>过程较为简单，主要分为以下三步。</p>
-<h4 id="启用匿名登录"><a href="#启用匿名登录" class="headerlink" title="启用匿名登录"></a>启用匿名登录</h4><p>Ambari界面可以直接在<code>Advanced zeppelin-config</code>中修改<code>zeppelin.anonymous.allowed</code>为<code>true</code>即可（原本为<code>false</code>）.</p>
-<p><img src="//heltman.github.io/2019/09/05/Zeppelin问题处理/1567682019709.png" alt="1567682019709"></p>
-<h4 id="关闭验证登录"><a href="#关闭验证登录" class="headerlink" title="关闭验证登录"></a>关闭验证登录</h4><p>Ambari界面直接在<code>Advanced zeppelin-shiro.ini</code>中修改<code>shiro_ini_content</code>的最后，打开<code>/** = anon</code>的注释，注释掉<code>/** = authc</code>，改完如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[urls]</span><br><span class="line"># This section is used for url-based security.</span><br><span class="line"># You can secure interpreter, configuration and credential information by urls. Comment or uncomment the below urls that you want to hide.</span><br><span class="line"># anon means the access is anonymous.</span><br><span class="line"># authc means Form based Auth Security</span><br><span class="line"># To enfore security, comment the line below and uncomment the next one</span><br><span class="line">/api/version = anon</span><br><span class="line">#/api/interpreter/** = authc, roles[admin]</span><br><span class="line">#/api/configurations/** = authc, roles[admin]</span><br><span class="line">#/api/credential/** = authc, roles[admin]</span><br><span class="line">/** = anon</span><br><span class="line">#/** = authc</span><br></pre></td></tr></table></figure>
-
-<h4 id="重启服务生效"><a href="#重启服务生效" class="headerlink" title="重启服务生效"></a>重启服务生效</h4><p>保存后按照要求重启服务即可</p>
-<h3 id="解决结果-1"><a href="#解决结果-1" class="headerlink" title="解决结果"></a>解决结果</h3><p><img src="//heltman.github.io/2019/09/05/Zeppelin问题处理/1567683023745.png" alt="1567683023745"></p>
+<p><img src="//heltman.github.io/2019/09/05/Zeppelin同时配置Spark和Spark2/1567681494806.png" alt="1567681494806"></p>
 
     </div>
 
@@ -444,9 +440,11 @@
           
           <div class="post-tags">
             
+              <a href="/tags/Zeppelin/" rel="tag"> <i class="fa fa-tag"></i> Zeppelin</a>
+            
               <a href="/tags/Spark/" rel="tag"> <i class="fa fa-tag"></i> Spark</a>
             
-              <a href="/tags/Zeppelin/" rel="tag"> <i class="fa fa-tag"></i> Zeppelin</a>
+              <a href="/tags/问题处理/" rel="tag"> <i class="fa fa-tag"></i> 问题处理</a>
             
           </div>
         
@@ -456,8 +454,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/04/Hive问题处理/" rel="next" title="Hive问题处理">
-                  <i class="fa fa-chevron-left"></i> Hive问题处理
+                <a href="/2019/09/04/Hive解决中文注释乱码/" rel="next" title="Hive中文注释乱码">
+                  <i class="fa fa-chevron-left"></i> Hive中文注释乱码
                 </a>
               
             </div>
@@ -465,6 +463,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/09/09/Zeppelin取消账户密码/" rel="prev" title="Zeppelin取消账户密码">
+                  Zeppelin取消账户密码 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -513,7 +515,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Zeppelin配置"><span class="nav-number">1.</span> <span class="nav-text">Zeppelin配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Zeppelin同时配置Spark和Spark2"><span class="nav-number">1.1.</span> <span class="nav-text">Zeppelin同时配置Spark和Spark2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题说明"><span class="nav-number">1.1.1.</span> <span class="nav-text">问题说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决过程"><span class="nav-number">1.1.2.</span> <span class="nav-text">解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关说明"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">相关说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决Spark1错误"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">解决Spark1错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看错误日志"><span class="nav-number">1.1.2.2.1.</span> <span class="nav-text">查看错误日志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#问题分析"><span class="nav-number">1.1.2.2.2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案"><span class="nav-number">1.1.2.2.3.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决Spark2错误"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">解决Spark2错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看错误日志-1"><span class="nav-number">1.1.2.3.1.</span> <span class="nav-text">查看错误日志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#问题分析-1"><span class="nav-number">1.1.2.3.2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案-1"><span class="nav-number">1.1.2.3.3.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决结果"><span class="nav-number">1.1.3.</span> <span class="nav-text">解决结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zeppelin取消账户密码"><span class="nav-number">1.2.</span> <span class="nav-text">Zeppelin取消账户密码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题说明-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">问题说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决过程-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启用匿名登录"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">启用匿名登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭验证登录"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">关闭验证登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重启服务生效"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">重启服务生效</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决结果-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">解决结果</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题说明"><span class="nav-number">1.</span> <span class="nav-text">问题说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决过程"><span class="nav-number">2.</span> <span class="nav-text">解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关说明"><span class="nav-number">2.1.</span> <span class="nav-text">相关说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决Spark1错误"><span class="nav-number">2.2.</span> <span class="nav-text">解决Spark1错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看错误日志"><span class="nav-number">2.2.1.</span> <span class="nav-text">查看错误日志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#问题分析"><span class="nav-number">2.2.2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案"><span class="nav-number">2.2.3.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决Spark2错误"><span class="nav-number">2.3.</span> <span class="nav-text">解决Spark2错误</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查看错误日志-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">查看错误日志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#问题分析-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方案-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决结果"><span class="nav-number">3.</span> <span class="nav-text">解决结果</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -528,7 +530,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -557,7 +559,11 @@
         
           
         
-        <span class="site-state-item-count">7</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -586,7 +592,23 @@
         
           
         
-        <span class="site-state-item-count">7</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

@@ -56,19 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="使用Ambari安装完HDP后，其中的插件使用或多或少存在一些问题，以下收集了一些解决方案供参考。">
-<meta name="keywords" content="Ambari,插件">
+  <meta name="description" content="在Hive使用过程中，往往需要添加额外的依赖，或者是自定义的UDFs，这里介绍添加依赖的几种方式。">
+<meta name="keywords" content="Hive,HiveServer2,依赖">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ambari插件问题处理">
-<meta property="og:url" content="http://heltman.github.io/2019/09/02/Ambari插件问题处理/index.html">
+<meta property="og:title" content="Hive依赖问题">
+<meta property="og:url" content="http://heltman.github.io/2019/09/09/Hive添加依赖/index.html">
 <meta property="og:site_name" content="闲吃萝卜">
-<meta property="og:description" content="使用Ambari安装完HDP后，其中的插件使用或多或少存在一些问题，以下收集了一些解决方案供参考。">
+<meta property="og:description" content="在Hive使用过程中，往往需要添加额外的依赖，或者是自定义的UDFs，这里介绍添加依赖的几种方式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-02T09:40:56.076Z">
+<meta property="og:updated_time" content="2019-09-12T08:21:51.281Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ambari插件问题处理">
-<meta name="twitter:description" content="使用Ambari安装完HDP后，其中的插件使用或多或少存在一些问题，以下收集了一些解决方案供参考。">
-  <link rel="canonical" href="http://heltman.github.io/2019/09/02/Ambari插件问题处理/">
+<meta name="twitter:title" content="Hive依赖问题">
+<meta name="twitter:description" content="在Hive使用过程中，往往需要添加额外的依赖，或者是自定义的UDFs，这里介绍添加依赖的几种方式。">
+  <link rel="canonical" href="http://heltman.github.io/2019/09/09/Hive添加依赖/">
 
 
 <script id="page-configurations">
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>Ambari插件问题处理 | 闲吃萝卜</title>
+  <title>Hive依赖问题 | 闲吃萝卜</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://heltman.github.io/2019/09/02/Ambari插件问题处理/">
+    <link itemprop="mainEntityOfPage" href="http://heltman.github.io/2019/09/09/Hive添加依赖/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Heltman">
@@ -273,7 +273,7 @@
       <meta itemprop="name" content="闲吃萝卜">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Ambari插件问题处理
+        <h1 class="post-title" itemprop="name headline">Hive依赖问题
 
           
         </h1>
@@ -289,11 +289,19 @@
                 
               
 
-              <time title="创建时间：2019-09-02 11:43:00 / 修改时间：17:40:56" itemprop="dateCreated datePublished" datetime="2019-09-02T11:43:00+08:00">2019-09-02</time>
+              <time title="创建时间：2019-09-09 08:55:15" itemprop="dateCreated datePublished" datetime="2019-09-09T08:55:15+08:00">2019-09-09</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-12 16:21:51" itemprop="dateModified" datetime="2019-09-12T16:21:51+08:00">2019-09-12</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -302,14 +310,14 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/问题处理/" itemprop="url" rel="index"><span itemprop="name">问题处理</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/问题处理/Ambari/" itemprop="url" rel="index"><span itemprop="name">Ambari</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -336,26 +344,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <center>使用Ambari安装完HDP后，其中的插件使用或多或少存在一些问题，以下收集了一些解决方案供参考。</center>
+        <center>在Hive使用过程中，往往需要添加额外的依赖，或者是自定义的UDFs，这里介绍添加依赖的几种方式。
 <a id="more"></a>
+Hive的客户端分为`hive-cli`和`beeline`，现在官方推荐使用的是`beeline`客户端，其使用`hiveserver2`服务作为服务端，提供统一jdbc接口，可以在任意安装`beeline`的地方运行。先说`hive-cli`的依赖。
 
-<h3 id="Files-View插件"><a href="#Files-View插件" class="headerlink" title="Files View插件"></a>Files View插件</h3><p><strong>问题：</strong>进行操作时弹出权限拒绝</p>
-<p><strong>解决方法：</strong></p>
-<p>在Ambari界面修改HDFS的配置中Custom core-site，新增：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop.proxyuser.admin.groups=*</span><br><span class="line">hadoop.proxyuser.admin.hosts=*</span><br></pre></td></tr></table></figure>
+<!-- more -->
 
-<p>其中admin为报没有权限的用户名</p>
-<p>如果配置后仍然报没有权限，说明部署Ambari-server的机器上没有该用户，需要登录机器新增该用户，并添加到users、hdfs和hadoop组：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -G hdfs admin </span><br><span class="line">usermod -a -G users admin </span><br><span class="line">usermod -a -G hadoop admin</span><br></pre></td></tr></table></figure>
+<h3 id="Hive-cli依赖添加"><a href="#Hive-cli依赖添加" class="headerlink" title="Hive-cli依赖添加"></a>Hive-cli依赖添加</h3><h4 id="对单个用户"><a href="#对单个用户" class="headerlink" title="对单个用户"></a>对单个用户</h4><p><strong>临时生效</strong></p>
+<p>登录<code>hive-cli</code>后直接使用<code>add jar</code>命令添加本地目录中的依赖，多个地址使用<code>,</code>分开，仅对当前session有效，退出后失效。这个方式支持添加放置在hdfs文件。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; add jar /opt/test.jar</span><br><span class="line">hive&gt; add jar hdfs:///tmp/test.jar</span><br></pre></td></tr></table></figure>
 
-<p>现在应该有权限进行操作了</p>
-<h3 id="Hive-View和Hive-View-2-0插件"><a href="#Hive-View和Hive-View-2-0插件" class="headerlink" title="Hive View和Hive View 2.0插件"></a>Hive View和Hive View 2.0插件</h3><p><strong>问题：</strong>数据存储异常，主要报错如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">org.apache.ambari.view.PersistenceException: Caught exception trying to store view entity JobImpl&#123;id='null, owner='admin, hiveQueryId='null, dagId='null, queryId='null&#125;</span><br><span class="line">......</span><br><span class="line">Caused by: javax.persistence.RollbackException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.6.2.v20151217-774c696): org.eclipse.persistence.exceptions.DatabaseException</span><br><span class="line">Internal Exception: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'ambari.ds_jobimpl_5' doesn't exist</span><br><span class="line">Error Code: 1146</span><br><span class="line">Call: INSERT INTO DS_JOBIMPL_5 (DS_id, DS_applicationId, DS_confFile, DS_dagId, DS_dagName, DS_dataBase, DS_dateSubmitted, DS_duration, DS_forcedContent, DS_globalSettings, DS_guid, DS_hiveQueryId, DS_logFile, DS_owner, DS_queryFile, DS_queryId, DS_referrer, DS_sessionTag, DS_sqlState, DS_status, DS_statusDir, DS_statusMessage, DS_title) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</span><br></pre></td></tr></table></figure>
+<p>使用<code>list jars</code>命令显示当前添加的依赖，使用<code>delete jar</code>删除添加的依赖。</p>
+<p>但是这个存在的问题就是临时的，特别是当你添加一个UDF的jar包并注册了UDF的时候，当你重新进入，如果不重新添加就会报类找不到异常。</p>
+<p><strong>永久生效</strong></p>
+<p>一种永久生效的方法就是将<code>add jar</code>语句添加到<code>~/.hiverc</code>，这个文件可以对当前用户登录hive时先运行，里面可以设置一些hive的预设参数命令，比如<code>set hive.cli.print.header=true;</code>，或者上面的<code>add jar</code>命令，每个命令为一行，以分号结尾，如果不存在，请手动创建这个文件。</p>
+<h4 id="对所有用户"><a href="#对所有用户" class="headerlink" title="对所有用户"></a>对所有用户</h4><p><strong>方法一</strong></p>
+<p>将jar包拷贝到<code>${HIVE_HOME}/lib</code>中，退出Hive-cli重新进入，就可以加载到依赖中了。</p>
+<p><strong>方法二</strong></p>
+<p>和方法一类似，但是将依赖独立放置。在<code>${HIVE_HOME}</code>下建立名为<code>auxlib</code>的目录，将jar文件拷贝到这个目录中，退出Hive-cli重新进入，就可以加载到依赖中了。</p>
+<p><strong>方法三</strong></p>
+<p>修改<code>hive-env.sh</code>，新增<code>HIVE.AUX.JARS.PATH</code>环境变量，即在文件最后加入下面的一行，这里可以配置本地的<font color="red">jar文件</font>或<font color="red">放置jar的文件夹</font>，多个地址使用<code>,</code>分开，<font color="red">不支持HDFS</font>，当然，直接linux命令行里导入环境变量也行，然后重新进入Hive-cli即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HIVE_AUX_JARS_PATH=/path/jars</span><br></pre></td></tr></table></figure>
 
-<p><strong>解决方法：</strong>需要到Mysql的ambari数据库中建立相应表，建表语句如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> DS_JOBIMPL_5 (</span><br><span class="line">ds_id <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">ds_applicationid <span class="built_in">TEXT</span>,</span><br><span class="line">ds_conffile <span class="built_in">TEXT</span>,</span><br><span class="line">ds_dagid <span class="built_in">TEXT</span>,</span><br><span class="line">ds_dagname <span class="built_in">TEXT</span>,</span><br><span class="line">ds_database <span class="built_in">TEXT</span>,</span><br><span class="line">ds_datesubmitted <span class="built_in">BIGINT</span>,</span><br><span class="line">ds_duration <span class="built_in">BIGINT</span>,</span><br><span class="line">ds_forcedcontent <span class="built_in">TEXT</span>,</span><br><span class="line">ds_globalsettings <span class="built_in">TEXT</span>,</span><br><span class="line">DS_guid <span class="built_in">TEXT</span>,</span><br><span class="line">DS_hiveQueryId <span class="built_in">TEXT</span>,</span><br><span class="line">ds_logfile <span class="built_in">TEXT</span>,</span><br><span class="line">ds_owner <span class="built_in">TEXT</span>,</span><br><span class="line">ds_queryfile <span class="built_in">TEXT</span>,</span><br><span class="line">ds_queryid <span class="built_in">TEXT</span>,</span><br><span class="line">ds_referrer <span class="built_in">TEXT</span>,</span><br><span class="line">ds_sessiontag <span class="built_in">TEXT</span>,</span><br><span class="line">ds_sqlstate <span class="built_in">TEXT</span>,</span><br><span class="line">ds_status <span class="built_in">TEXT</span>,</span><br><span class="line">ds_statusdir <span class="built_in">TEXT</span>,</span><br><span class="line">ds_statusmessage <span class="built_in">TEXT</span>,</span><br><span class="line">ds_title <span class="built_in">TEXT</span>,</span><br><span class="line">PRIMARY <span class="keyword">KEY</span> (ds_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>不过如果使用的是Ambari安装的Hive，其帮助管理了这个配置项，因此在Ambari上重启Hive后配置会被还原，所以应该在Ambari中来配置这个变量，这样也能同时将配置同步到所有机器，<strong>因此如果想在每台机器上运行<code>hive-cli</code>，也必须保证相应机器上存在这个配置的目录和文件才行。</strong></p>
+<h4 id="未验证通过"><a href="#未验证通过" class="headerlink" title="未验证通过"></a>未验证通过</h4><p><strong>其一</strong></p>
+<p>命令行使用如下命令进入Hive-cli：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive --auxpath /path/tets.jar</span><br></pre></td></tr></table></figure>
 
+<p>实际测试不能检测到添加的依赖</p>
+<p><strong>其二</strong></p>
+<p>修改<code>hive-site.xml</code>，新增<code>hive.aux.jars.path</code>配置，如下所示</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.aux.jars.path<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/path/test.jar<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>配置后重启hive依然无法在Hive-cli检测到依赖。</p>
+<p><strong>其三</strong></p>
+<p>命令行使用如下命令进如Hive-cli：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive --hiveconf hive.aux.jars.path=/path/test.jar</span><br></pre></td></tr></table></figure>
+
+<h3 id="HiveServer2依赖添加"><a href="#HiveServer2依赖添加" class="headerlink" title="HiveServer2依赖添加"></a>HiveServer2依赖添加</h3><p>HiveServer2的依赖添加方式和Hive-cli的有一些相同，但是对于Hive-cli，在一台机器上配置的依赖，只能在当前机器上用，而如果在这台机器上装有HiveServer2，那么就相当于所有连接到HiveServer2的机器都连到了这台机器上，因此HiveServer2添加依赖，仅需在安装HiveServer2的机器上配置即可，这也是官方推荐使用HiveServer2的原因之一了。</p>
+<p>另外HiveServer2并不会加载<code>${HIVE_HOME}/lib</code>中所有包，而仅有其中所需的官方包，比如其中的<code>hive-contrib-xxxx.jar</code>，其中包含了一些功能的实现，比如Hive不支持自增列、多分隔符，这个包里面就有实现方法。这就意味着你在Hive-cli中是能够使用这些功能创建表，但是HiveServer2里面会找不到这个包报错。</p>
+<h4 id="对单个用户-1"><a href="#对单个用户-1" class="headerlink" title="对单个用户"></a>对单个用户</h4><p><strong>临时生效</strong></p>
+<p>当然和Hive-cli中一样可以使用<code>add jar</code>命令，但是需要注意，如果这里使用本地目录，对应的本地目录是HiveServer2对应的本地目录，而不是登录的beeline客户端的本地目录，所以为了方便，这里使用hdfs目录更好，方便所有地方都可以获取到。</p>
+<p><strong>永久生效</strong></p>
+<p>如果对应<code>.hiverc</code>文件实现的功能，beeline可以使用<code>-i</code>来实现进入客户端前的初始化，比如将<code>add jar</code>命令写入文件<code>/tmp/beeline-init</code>文件中，然后使用如下命令进入客户端，最后的<code>-n</code>是使用hive用户的意思，可以不要：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beeline -i /tmp/beeline-init -u jdbc:hive2://hadoop1:10000 -n hive</span><br></pre></td></tr></table></figure>
+
+<p>但是只是将每次需要手动输入的添加jar包的命令变成进入前先自动进行，如果使用的是本地目录，对应的是HiveServer2服务器上的目录。</p>
+<h4 id="对所有用户-1"><a href="#对所有用户-1" class="headerlink" title="对所有用户"></a>对所有用户</h4><p><strong>方法一</strong></p>
+<p>因为HiveServer2不会加载<code>${HIVE_HOME}/lib</code>下其他包，所以并不能通过把包放到其中，然后重启HiveServer2服务生效，但是可以放置到自建的<code>auxlib</code>中。</p>
+<p>同Hive-cli中的方法二，在<code>${HIVE_HOME}</code>下建立名为<code>auxlib</code>的目录，将jar文件拷贝到这个目录中，然后重启HiveServer2服务，这时在使用beeline连接时即可检测到依赖了，而且在HiveServer2运行中，如果删除这个目录下的依赖，仍然能够正常使用，不过重启服务后就不能使用了。这也说明HiveServer2只在启动时加载其中的文件，运行在就不需要这个目录了，当重启后会重新加载这个目录中的文件。</p>
+<p><strong>方法二</strong></p>
+<p>同Hive-cli方法三，在HiveServer2服务端，修改<code>hive-env.sh</code>，新增<code>HIVE.AUX.JARS.PATH</code>环境变量，即在文件最后加入下面的一行，这里可以配置本地的<font color="red">jar文件</font>或<font color="red">放置jar的文件夹</font>，多个地址使用<code>,</code>分开，<font color="red">不支持HDFS</font>，当然，直接linux命令行里导入环境变量也行，然后重启HiveServer2服务即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HIVE_AUX_JARS_PATH=/path/jars</span><br></pre></td></tr></table></figure>
+
+<p>不过如果使用的是Ambari安装的Hive，其帮助管理了这个配置项，因此在Ambari上重启Hive后配置会被还原，所以应该在Ambari中来配置这个变量。</p>
+<h4 id="未验证通过-1"><a href="#未验证通过-1" class="headerlink" title="未验证通过"></a>未验证通过</h4><p>同Hive-cli，其中三种方式均为验证通过。</p>
+</center>
     </div>
 
     
@@ -381,9 +425,11 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Ambari/" rel="tag"> <i class="fa fa-tag"></i> Ambari</a>
+              <a href="/tags/Hive/" rel="tag"> <i class="fa fa-tag"></i> Hive</a>
             
-              <a href="/tags/插件/" rel="tag"> <i class="fa fa-tag"></i> 插件</a>
+              <a href="/tags/HiveServer2/" rel="tag"> <i class="fa fa-tag"></i> HiveServer2</a>
+            
+              <a href="/tags/依赖/" rel="tag"> <i class="fa fa-tag"></i> 依赖</a>
             
           </div>
         
@@ -393,8 +439,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/28/数据仓库架构/" rel="next" title="数据仓库架构简单介绍">
-                  <i class="fa fa-chevron-left"></i> 数据仓库架构简单介绍
+                <a href="/2019/09/09/Zeppelin取消账户密码/" rel="next" title="Zeppelin取消账户密码">
+                  <i class="fa fa-chevron-left"></i> Zeppelin取消账户密码
                 </a>
               
             </div>
@@ -403,8 +449,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/09/04/Hive解决中文注释乱码/" rel="prev" title="Hive中文注释乱码">
-                  Hive中文注释乱码 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/09/09/Hive使用SerDe注释变为from deserializer/" rel="prev" title="Hive解决使用SerDe注释异常">
+                  Hive解决使用SerDe注释异常 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -454,7 +500,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Files-View插件"><span class="nav-number">1.</span> <span class="nav-text">Files View插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hive-View和Hive-View-2-0插件"><span class="nav-number">2.</span> <span class="nav-text">Hive View和Hive View 2.0插件</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hive-cli依赖添加"><span class="nav-number">1.</span> <span class="nav-text">Hive-cli依赖添加</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对单个用户"><span class="nav-number">1.1.</span> <span class="nav-text">对单个用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对所有用户"><span class="nav-number">1.2.</span> <span class="nav-text">对所有用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#未验证通过"><span class="nav-number">1.3.</span> <span class="nav-text">未验证通过</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HiveServer2依赖添加"><span class="nav-number">2.</span> <span class="nav-text">HiveServer2依赖添加</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对单个用户-1"><span class="nav-number">2.1.</span> <span class="nav-text">对单个用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对所有用户-1"><span class="nav-number">2.2.</span> <span class="nav-text">对所有用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#未验证通过-1"><span class="nav-number">2.3.</span> <span class="nav-text">未验证通过</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->

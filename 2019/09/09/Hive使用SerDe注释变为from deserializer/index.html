@@ -56,19 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="Spark简单解释说明，待更新……">
-<meta name="keywords" content="Spark,入门文档">
+  <meta name="description" content="在使用多分割符的过程中，Hive的注释中文注释显示成了from deserializer，查看发现是Bug，只能临时解决。">
+<meta name="keywords" content="Hive,Serde,注释">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spark简单学习说明">
-<meta property="og:url" content="http://heltman.github.io/2019/08/28/Spark官方文档学习/index.html">
+<meta property="og:title" content="Hive解决使用SerDe注释异常">
+<meta property="og:url" content="http://heltman.github.io/2019/09/09/Hive使用SerDe注释变为from deserializer/index.html">
 <meta property="og:site_name" content="闲吃萝卜">
-<meta property="og:description" content="Spark简单解释说明，待更新……">
+<meta property="og:description" content="在使用多分割符的过程中，Hive的注释中文注释显示成了from deserializer，查看发现是Bug，只能临时解决。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-02T09:38:13.000Z">
+<meta property="og:updated_time" content="2019-09-09T08:55:32.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spark简单学习说明">
-<meta name="twitter:description" content="Spark简单解释说明，待更新……">
-  <link rel="canonical" href="http://heltman.github.io/2019/08/28/Spark官方文档学习/">
+<meta name="twitter:title" content="Hive解决使用SerDe注释异常">
+<meta name="twitter:description" content="在使用多分割符的过程中，Hive的注释中文注释显示成了from deserializer，查看发现是Bug，只能临时解决。">
+  <link rel="canonical" href="http://heltman.github.io/2019/09/09/Hive使用SerDe注释变为from deserializer/">
 
 
 <script id="page-configurations">
@@ -82,7 +82,7 @@
   };
 </script>
 
-  <title>Spark简单学习说明 | 闲吃萝卜</title>
+  <title>Hive解决使用SerDe注释异常 | 闲吃萝卜</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://heltman.github.io/2019/08/28/Spark官方文档学习/">
+    <link itemprop="mainEntityOfPage" href="http://heltman.github.io/2019/09/09/Hive使用SerDe注释变为from deserializer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Heltman">
@@ -273,7 +273,7 @@
       <meta itemprop="name" content="闲吃萝卜">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Spark简单学习说明
+        <h1 class="post-title" itemprop="name headline">Hive解决使用SerDe注释异常
 
           
         </h1>
@@ -289,19 +289,11 @@
                 
               
 
-              <time title="创建时间：2019-08-28 11:55:57" itemprop="dateCreated datePublished" datetime="2019-08-28T11:55:57+08:00">2019-08-28</time>
+              <time title="创建时间：2019-09-09 08:55:16 / 修改时间：16:55:32" itemprop="dateCreated datePublished" datetime="2019-09-09T08:55:16+08:00">2019-09-09</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-02 17:38:13" itemprop="dateModified" datetime="2019-09-02T17:38:13+08:00">2019-09-02</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -310,14 +302,14 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/问题处理/" itemprop="url" rel="index"><span itemprop="name">问题处理</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/Spark/" itemprop="url" rel="index"><span itemprop="name">Spark</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/问题处理/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -344,38 +336,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <center>Spark简单解释说明，待更新……</center>
+        <center>在使用多分割符的过程中，Hive的注释中文注释显示成了from deserializer，查看发现是Bug，只能临时解决。
+
 <a id="more"></a>
 
-<h2 id="配置Spark"><a href="#配置Spark" class="headerlink" title="配置Spark"></a>配置Spark</h2><p>连接Spark到任意hadoop集群</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">### in conf/spark-env.sh ###</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If 'hadoop' binary is on your PATH</span></span><br><span class="line"><span class="built_in">export</span> SPARK_DIST_CLASSPATH=$(hadoop classpath)</span><br><span class="line"></span><br><span class="line"><span class="comment"># With explicit path to 'hadoop' binary</span></span><br><span class="line"><span class="built_in">export</span> SPARK_DIST_CLASSPATH=$(/path/to/hadoop/bin/hadoop classpath)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Passing a Hadoop configuration directory</span></span><br><span class="line"><span class="built_in">export</span> SPARK_DIST_CLASSPATH=$(hadoop --config /path/to/configs classpath)</span><br></pre></td></tr></table></figure>
+<h4 id="问题说明"><a href="#问题说明" class="headerlink" title="问题说明"></a>问题说明</h4><p>当使用非内置SerDe时，添加了注释的话，字段注释会显示成<code>from deserializer</code></p>
+<h4 id="解决过程"><a href="#解决过程" class="headerlink" title="解决过程"></a>解决过程</h4><p>这个问题官方目前尚未解决，但是可以设置Hive如下属性来能够正确识别注释，即使用你指定的SerDe来解析Schema——</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.serdes.using.metastore.for.schema=org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe;</span><br></pre></td></tr></table></figure>
 
-<h2 id="写Spark程序"><a href="#写Spark程序" class="headerlink" title="写Spark程序"></a>写Spark程序</h2><h3 id="与Spark连接"><a href="#与Spark连接" class="headerlink" title="与Spark连接"></a>与Spark连接</h3><p>Spark 1.6.1使用Scala 2.10。要在Scala中编写应用程序，您需要使用兼容的Scala版本（例如2.10.X）。</p>
-<h4 id="编写Spark程序所需mvn依赖"><a href="#编写Spark程序所需mvn依赖" class="headerlink" title="编写Spark程序所需mvn依赖"></a>编写Spark程序所需mvn依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.spark<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spark-core_2.10<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果需要连接HDFS，还需要如下依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-client --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hadoop.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>最后需要在程序中import一些Spark类</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.spark.<span class="type">SparkContext</span></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.<span class="type">SparkConf</span></span><br></pre></td></tr></table></figure>
-
-<p>（在Spark 1.3.0之前，您需要显式导入org.apache.spark.SparkContext._以启用必要的隐式转换。)</p>
-<h3 id="初始化Spark"><a href="#初始化Spark" class="headerlink" title="初始化Spark"></a>初始化Spark</h3><p>Spark程序必须做的第一件事是创建一个SparkContext对象，它告诉Spark如何访问集群。要创建SparkContext，首先需要构建一个包含有关应用程序信息的SparkConf对象。</p>
-<p>每个JVM只能激活一个SparkContext。在创建新的SparkContext之前，必须先<code>stop()</code>。</p>
-<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>().setAppName(appName).setMaster(master)</span><br><span class="line"><span class="keyword">new</span> <span class="type">SparkContext</span>(conf)</span><br></pre></td></tr></table></figure>
-
-<p>appName参数是应用程序在集群UI上显示的名称。 master是Spark，Mesos或YARN群集URL，或者是以本地模式运行的特殊“本地”字符串。 实际上，在群集上运行时，您不希望在程序中对master进行硬编码，而是使用spark-submit启动应用程序并在那里接收它。 但是，对于本地测试和单元测试，您可以传递“local”以在进程中运行Spark。</p>
-<h4 id="使用shell"><a href="#使用shell" class="headerlink" title="使用shell"></a>使用shell</h4><p>在Spark shell中，已经在名为<code>sc</code>的变量中为您创建了一个特殊的SparkContext 。制作自己的SparkContext将无法正常工作。您可以使用<code>--master</code>参数设置上下文连接到的主服务器，并且可以通过将逗号分隔的列表传递给参数来将JAR添加到类路径中<code>--jars</code>。您还可以通过为参数提供以逗号分隔的maven坐标列表，将依赖项（例如Spark包）添加到shell会话中<code>--packages</code>。任何可能存在依赖关系的其他存储库（例如SonaType）都可以传递给<code>--repositories</code>参数。例如，要<code>bin/spark-shell</code>在四个核心上运行，请使用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/spark-shell --master <span class="built_in">local</span>[4]</span><br></pre></td></tr></table></figure>
-
-<p>或者，要将code.jar添加到其类路径中，请使用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/spark-shell --master <span class="built_in">local</span>[4] --jars code.jar</span><br></pre></td></tr></table></figure>
-
-<p>要使用maven坐标包含依赖项:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./bin/spark-shell --master <span class="built_in">local</span>[4] --packages <span class="string">"org.example:example:0.1"</span></span><br></pre></td></tr></table></figure>
-
-<p>有关选项的完整列表，请运行<code>spark-shell --help</code>。在幕后， <code>spark-shell</code>调用更通用的<span class="exturl" data-url="aHR0cDovL3NwYXJrLmFwYWNoZS5vcmcvZG9jcy8xLjYuMS9zdWJtaXR0aW5nLWFwcGxpY2F0aW9ucy5odG1s" title="http://spark.apache.org/docs/1.6.1/submitting-applications.html"><code>spark-submit</code>脚本<i class="fa fa-external-link"></i></span>。</p>
-
+<blockquote>
+<p>参考：</p>
+<p>Hive column comments disappearing/being replaced by “from deserializer” <span class="exturl" data-url="aHR0cHM6Ly9pc3N1ZXMuYXBhY2hlLm9yZy9qaXJhL2Jyb3dzZS9ISVZFLTE1Mzc0" title="https://issues.apache.org/jira/browse/HIVE-15374">HIVE-15374<i class="fa fa-external-link"></i></span></p>
+<p>Hive table always set column comment is “from deserializer” <span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNDgwNTYxODcvaGl2ZS10YWJsZS1hbHdheXMtc2V0LWNvbHVtbi1jb21tZW50LWlzLWZyb20tZGVzZXJpYWxpemVy" title="https://stackoverflow.com/questions/48056187/hive-table-always-set-column-comment-is-from-deserializer">STACKOVERFLOW<i class="fa fa-external-link"></i></span></p>
+</blockquote>
+<h4 id="解决结果"><a href="#解决结果" class="headerlink" title="解决结果"></a>解决结果</h4><p>已解决。</p>
+</center>
     </div>
 
     
@@ -401,9 +376,11 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Spark/" rel="tag"> <i class="fa fa-tag"></i> Spark</a>
+              <a href="/tags/Hive/" rel="tag"> <i class="fa fa-tag"></i> Hive</a>
             
-              <a href="/tags/入门文档/" rel="tag"> <i class="fa fa-tag"></i> 入门文档</a>
+              <a href="/tags/Serde/" rel="tag"> <i class="fa fa-tag"></i> Serde</a>
+            
+              <a href="/tags/注释/" rel="tag"> <i class="fa fa-tag"></i> 注释</a>
             
           </div>
         
@@ -413,14 +390,18 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/09/09/Hive添加依赖/" rel="next" title="Hive依赖问题">
+                  <i class="fa fa-chevron-left"></i> Hive依赖问题
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/08/28/数据仓库架构/" rel="prev" title="数据仓库架构简单介绍">
-                  数据仓库架构简单介绍 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/09/09/Hive排除选择列/" rel="prev" title="Hive排除选择列">
+                  Hive排除选择列 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -470,7 +451,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Spark"><span class="nav-number">1.</span> <span class="nav-text">配置Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写Spark程序"><span class="nav-number">2.</span> <span class="nav-text">写Spark程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与Spark连接"><span class="nav-number">2.1.</span> <span class="nav-text">与Spark连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编写Spark程序所需mvn依赖"><span class="nav-number">2.1.1.</span> <span class="nav-text">编写Spark程序所需mvn依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化Spark"><span class="nav-number">2.2.</span> <span class="nav-text">初始化Spark</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用shell"><span class="nav-number">2.2.1.</span> <span class="nav-text">使用shell</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题说明"><span class="nav-number">1.</span> <span class="nav-text">问题说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决过程"><span class="nav-number">2.</span> <span class="nav-text">解决过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决结果"><span class="nav-number">3.</span> <span class="nav-text">解决结果</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -485,7 +466,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -514,7 +495,11 @@
         
           
         
-        <span class="site-state-item-count">7</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -543,7 +528,23 @@
         
           
         
-        <span class="site-state-item-count">7</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
